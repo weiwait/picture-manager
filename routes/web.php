@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('pictures', 'IndexController@index');
+Route::get('view', 'IndexController@view');
+Route::post('view', 'IndexController@add')->name('picture');
