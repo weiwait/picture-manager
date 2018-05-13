@@ -3,9 +3,19 @@
 @section('title', '图片列表')
 
 @section('content')
-<div id="drop" style="height: 500px;background: red;">
-wefw
-</div>
+    <div id="contain">
+        <div>
+            @foreach ($images as $image)
+                <div class="images">
+                    <img src="{{$image}}" alt="">
+                    <a href="{{URL::action('IndexController@delete', [basename($image)])}}">删除图片</a>
+                </div>
+            @endforeach
+            <div class="images" id="drop">
+                +
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')
@@ -24,7 +34,9 @@ wefw
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    console.log(data)
+                    if (data) {
+                        window.location.reload();
+                    }
                 }
             });
             return false;

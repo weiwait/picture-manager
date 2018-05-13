@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('pictures', 'IndexController@index');
 Route::get('view', 'IndexController@view');
 Route::post('view', 'IndexController@add')->name('picture');
+Route::get('delete/{file}', 'IndexController@delete');
