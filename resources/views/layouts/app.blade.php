@@ -27,6 +27,7 @@
             background: rgba(255, 74, 47, 0.35);
             float: left;
             margin: 0 0 40px 20px;
+            position: relative;
         }
 
         .images:nth-of-type(4n + 1) {
@@ -61,6 +62,24 @@
             text-align: center;
             color: #6f6f6f;
             user-select: none;
+        }
+
+        .up {
+            font-size: 30px;
+            position: absolute;
+            top: 110px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .down {
+            font-size: 30px;
+            position: absolute;
+            top: 110px;
+            left: 15px;
+            width: 30px;
+            height: 30px;
         }
     </style>
 </head>
