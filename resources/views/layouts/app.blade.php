@@ -68,7 +68,7 @@
             font-size: 30px;
             position: absolute;
             top: 110px;
-            right: 15px;
+            left: 15px;
             width: 30px;
             height: 30px;
         }
@@ -77,7 +77,7 @@
             font-size: 30px;
             position: absolute;
             top: 110px;
-            left: 15px;
+            right: 15px;
             width: 30px;
             height: 30px;
         }

@@ -9,8 +9,8 @@
                 <div class="images">
                     <img src="{{$image['image']}}" alt="">
 
-                    <a class="down" href="{{URL::action('IndexController@sortDown', [$image['sort']])}}"><</a>
-                    <a class="up" href="{{URL::action('IndexController@sortUp', [$image['sort']])}}">></a>
+                    <a class="down" href="{{URL::action('IndexController@sortDown', [$image['sort']])}}">></a>
+                    <a class="up" href="{{URL::action('IndexController@sortUp', [$image['sort']])}}"><</a>
 
                     <a href="{{URL::action('IndexController@delete', [$image['id'], basename($image['image'])])}}">删除图片</a>
                 </div>
