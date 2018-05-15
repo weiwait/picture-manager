@@ -12,7 +12,7 @@
                     <a class="down" href="{{URL::action('IndexController@sortDown', [$image['sort']])}}">></a>
                     <a class="up" href="{{URL::action('IndexController@sortUp', [$image['sort']])}}"><</a>
 
-                    <a href="{{URL::action('IndexController@delete', [$item['id'], pathinfo($item['image'])['filename'], pathinfo($item['image'])['extension']])}}">删除图片</a>
+                    <a href="{{URL::action('IndexController@delete', [$image['id'], pathinfo($image['image'])['filename'], pathinfo($image['image'])['extension']])}}">删除图片</a>
                 </div>
             @endforeach
             <div class="images" id="drop">
