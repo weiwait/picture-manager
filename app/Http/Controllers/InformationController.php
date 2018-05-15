@@ -35,7 +35,7 @@ class InformationController extends Controller
 
     public function delete(Request $request)
     {
-        Storage::delete('public/images/' . $request->file);
+        Storage::delete("public/images/{$request->file}.{$request->ext}");
         Trophy::destroy($request->id);
 
         return redirect('information');

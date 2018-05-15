@@ -29,7 +29,7 @@ class IndexController extends Controller
             $image = 'storage' . trim($image, 'public');
             $banner = new Banner;
             $banner->image = $image;
-            $banner->content = ' ';
+            $banner->content = ' 7';
             $banner->sort = Banner::query()->count('*');
             if ($banner->save()) {
                 return 1;
@@ -49,7 +49,7 @@ class IndexController extends Controller
 
     public function delete(Request $request)
     {
-        Storage::delete('public/images/' . $request->file);
+        Storage::delete("public/images/{$request->file}.{$request->ext}");
         Banner::destroy($request->id);
 
         $images = Banner::query()->select(['id'])->orderBy('sort', 'asc')->get();

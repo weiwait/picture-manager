@@ -14,7 +14,7 @@
                         <button onclick="changeTitle({{$item['id']}}, this)">更改</button>
                     </div>
 
-                    <a href="{{URL::action('InformationController@delete', [$item['id'], basename($item['image'])])}}">删除资讯</a>
+                    <a href="{{URL::action('InformationController@delete', [$item['id'], pathinfo($item['image'])['filename'], pathinfo($item['image'])['extension']])}}">删除资讯</a>
                 </div>
             @endforeach
             <div class="images drop-inf" id="drop">
