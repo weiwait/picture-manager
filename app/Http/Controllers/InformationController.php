@@ -22,8 +22,8 @@ class InformationController extends Controller
             $image = 'storage' . trim($image, 'public');
             $banner = new Trophy();
             $banner->image = $image;
-            $banner->content = ' ';
-            $banner->title = ' ';
+            $banner->content = '';
+            $banner->title = '';
             if ($banner->save()) {
                 return 1;
             } else {

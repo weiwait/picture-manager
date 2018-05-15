@@ -89,7 +89,7 @@
         function changeTitle(id, obj)
         {
             var title = $(obj).siblings('input').val();
-            $.get('{{URL::action('InformationController@title')}}', {id: id, data: title}, function (result) {
+            $.post('{{URL::action('InformationController@title')}}', {id: id, data: title}, function (result) {
                 if (result.status === 1) {
                     alert('编辑成功');
                 } else {

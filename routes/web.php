@@ -30,6 +30,6 @@ Route::post('add', 'InformationController@add');
 Route::get('delete2/{id}/{file}/{ext}', 'InformationController@delete');
 Route::get('getContent2', 'InformationController@getContent');
 Route::post('pushContent2', 'InformationController@pushContent');
-Route::get('title', 'InformationController@title');
+Route::post('title', 'InformationController@title');
 
 Route::get('list', 'IndexController@informationList');
