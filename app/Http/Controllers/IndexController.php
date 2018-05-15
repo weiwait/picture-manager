@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Trophy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
@@ -11,12 +12,15 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $images = Storage::allFiles('public/images');
-        foreach ($images as $key => $image) {
-            $images[$key] = 'storage' . trim($image, 'public');
-        }
-        return response()->json($images);
-}
+        $banners = Banner::query()->select(['id', 'image'])->orderBy('sort', 'desc')->get()->toArray();
+        return response()->json($banners);
+    }
+
+    public function informationList()
+    {
+        $informationList = Trophy::query()->select(['id', 'image', 'title', 'created_at'])->get()->toArray();
+        return response()->json($informationList);
+    }
 
     public function add(Request $request)
     {
@@ -25,7 +29,7 @@ class IndexController extends Controller
             $image = 'storage' . trim($image, 'public');
             $banner = new Banner;
             $banner->image = $image;
-            $banner->content = '123';
+            $banner->content = '';
             $banner->sort = Banner::query()->count('*');
             if ($banner->save()) {
                 return 1;
@@ -90,6 +94,24 @@ class IndexController extends Controller
         }
 
         return redirect('view');
+    }
+
+    public function getContent(Request $request)
+    {
+        $content = Banner::query()->select('content')->find($request->id);
+
+        return response()->json(['data' => $content]);
+    }
+
+    public function pushContent(Request $request)
+    {
+        $banner = Banner::query()->find($request->id);
+        $banner->content = $request->data;
+        if ($banner->save()) {
+            return response()->json(['status' => 1]);
+        }
+
+        return response()->json(['status' => 0]);
     }
 
 }
