@@ -29,7 +29,7 @@ class IndexController extends Controller
             $image = 'storage' . trim($image, 'public');
             $banner = new Banner;
             $banner->image = $image;
-            $banner->content = '';
+            $banner->content = ' ';
             $banner->sort = Banner::query()->count('*');
             if ($banner->save()) {
                 return 1;

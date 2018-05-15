@@ -71,7 +71,7 @@
 
         #drop {
             width: 298px;
-            height: 276px;
+            height: 250px;
             border: 1px solid #ccc;
             float: left;
             margin: 0 0 40px 20px;
@@ -80,6 +80,10 @@
             text-align: center;
             color: #6f6f6f;
             user-select: none;
+        }
+
+        .drop-inf {
+            height: 276px!important;
         }
 
         .up {

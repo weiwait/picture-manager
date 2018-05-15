@@ -17,7 +17,7 @@
                     <a href="{{URL::action('InformationController@delete', [$item['id'], basename($item['image'])])}}">删除资讯</a>
                 </div>
             @endforeach
-            <div class="images" id="drop">
+            <div class="images drop-inf" id="drop">
                 +
             </div>
         </div>
