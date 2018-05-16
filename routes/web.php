@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('view');
 });
 
 Route::get('pictures', 'IndexController@index');

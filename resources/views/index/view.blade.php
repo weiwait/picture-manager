@@ -64,7 +64,7 @@
         function editContent(id)
         {
             window.weiwait.id = id;
-            $.get('{{URL::action('IndexController@getContent')}}', {id: id}, function (result) {
+            $.get('{{URL::action('IndexController@getContent')}}/' + id, function (result) {
                 clearLocalData();
                 setContent(result.data.content);
             }, 'json');
