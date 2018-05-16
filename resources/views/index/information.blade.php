@@ -137,7 +137,7 @@
             arr.push(UE.getEditor('editor').getPlainTxt());
             alert(arr.join('\n'))
         }
-        function setContent(content = '',isAppendTo) {
+        function setContent(content, isAppendTo) {
             UE.getEditor('editor').setContent(content, isAppendTo);
         }
         function setDisabled() {

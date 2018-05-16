@@ -3,25 +3,6 @@
 @section('title', '图片列表')
 
 @section('content')
-    <div id="contain" class="cf">
-        <div>
-            @foreach ($images as $image)
-                <div class="images" ondblclick="editContent({{$image['id']}})">
-                    <img src="{{$image['image']}}" alt="">
-
-                    <a class="down" href="{{URL::action('IndexController@sortDown', [$image['sort']])}}">></a>
-                    <a class="up" href="{{URL::action('IndexController@sortUp', [$image['sort']])}}"><</a>
-
-                    <a href="{{URL::action('IndexController@delete', [$image['id'], pathinfo($image['image'])['filename'], pathinfo($image['image'])['extension']])}}">删除图片</a>
-                </div>
-            @endforeach
-            <div class="images" id="drop">
-                +
-            </div>
-        </div>
-    </div>
-
-
     <div id="editor-container">
         <div id="editor" type="text/plain" style="height:500px;">
         </div>
@@ -36,45 +17,18 @@
             }
         });
 
-        $('#drop').on('dragover', function () {
-            return false;
-        }).on('drop', function (e) {
-            var file = e.originalEvent.dataTransfer.files[0];
-            var formData = new FormData();
-            formData.append('_token', '{{csrf_token()}}');
-            formData.append('picture', file);
-            $.ajax({
-                type: 'POST',
-                url: '{{route('picture')}}',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data) {
-                        window.location.reload();
-                    }
-                }
-            });
-            return false;
-        });
-
-
-        var weiwait = {};
-        window.weiwait = weiwait;
-        function editContent(id)
+        function editContent()
         {
-            window.weiwait.id = id;
-            $.get('{{URL::action('IndexController@getContent')}}', {id: id}, function (result) {
+            $.get('{{URL::action('InformationController@getTrophy')}}', function (result) {
                 clearLocalData();
                 setContent(result.data.content);
             }, 'json');
         }
-
         function pushContent()
         {
             var data = getContent();
 
-            $.post('{{URL::action('IndexController@pushContent')}}', {id: window.weiwait.id, data: data}, function (result) {
+            $.post('{{URL::action('InformationController@setTrophy')}}', {data: data}, function (result) {
                 if (result.status === 1) {
                     alert('编辑成功');
                 } else {
@@ -82,6 +36,19 @@
                     window.location.reload();
                 }
             });
+        }
+
+        function changeTitle(id, obj)
+        {
+            var title = $(obj).siblings('input').val();
+            $.post('{{URL::action('InformationController@title')}}', {id: id, data: title}, function (result) {
+                if (result.status === 1) {
+                    alert('编辑成功');
+                } else {
+                    alert('未知错误');
+                    window.location.reload();
+                }
+            }, 'json');
         }
     </script>
 
@@ -228,5 +195,9 @@
             //因为你是添加button,所以需要返回这个button
             return btn;
         });
+
+        window.onload = function () {
+            editContent();
+        };
     </script>
 @endpush

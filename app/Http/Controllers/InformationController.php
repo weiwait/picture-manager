@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lottery;
 use App\Trophy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -63,6 +64,29 @@ class InformationController extends Controller
     {
         $banner = Trophy::query()->find($request->id);
         $banner->title = $request->data;
+        if ($banner->save()) {
+            return response()->json(['status' => 1]);
+        }
+
+        return response()->json(['status' => 0]);
+    }
+
+    public function trophy()
+    {
+        return view('index.trophy');
+    }
+
+    public function getTrophy(Request $request)
+    {
+        $content = Lottery::query()->select('content')->first();
+
+        return response()->json(['data' => $content]);
+    }
+
+    public function setTrophy(Request $request)
+    {
+        $banner = Lottery::query()->first();
+        $banner->content = $request->data;
         if ($banner->save()) {
             return response()->json(['status' => 1]);
         }

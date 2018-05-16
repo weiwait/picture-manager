@@ -31,5 +31,8 @@ Route::get('delete2/{id}/{file}/{ext}', 'InformationController@delete');
 Route::get('getContent2/{id?}', 'InformationController@getContent');
 Route::post('pushContent2', 'InformationController@pushContent');
 Route::post('title', 'InformationController@title');
+Route::get('trophy', 'InformationController@trophy');
+Route::get('getTrophy', 'InformationController@getTrophy');
+Route::post('setTrophy', 'InformationController@setTrophy');
 
 Route::get('list', 'IndexController@informationList');

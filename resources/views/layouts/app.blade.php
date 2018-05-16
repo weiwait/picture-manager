@@ -116,7 +116,7 @@
 
         #nav li {
             float: left;
-            width: 50%;
+            width: 33.3333333333%;
             height: 36px;
             line-height: 36px;
             background: #FF4A2F;
@@ -150,8 +150,9 @@
 
 <div id="nav" class="cf">
     <ul>
-        <li><a href="{{URL::action('IndexController@view')}}">Banner manager</a></li>
-        <li><a href="{{URL::action('InformationController@information')}}">Information manager</a></li>
+        <li><a href="{{URL::action('IndexController@view')}}">轮播图管理</a></li>
+        <li><a href="{{URL::action('InformationController@information')}}">资讯管理</a></li>
+        <li><a href="{{URL::action('InformationController@trophy')}}">开奖管理</a></li>
     </ul>
 </div>
 

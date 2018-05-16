@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTrophysTable extends Migration
+class CreateLotterysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateTrophysTable extends Migration
      */
     public function up()
     {
-        Schema::create('trophys', function (Blueprint $table) {
+        Schema::create('lotterys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
-            $table->string('title');
             $table->string('content');
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -28,6 +27,6 @@ class CreateTrophysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trophys');
+        Schema::dropIfExists('lotterys');
     }
 }
