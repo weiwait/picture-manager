@@ -19,3 +19,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'Api\PassportController@login');
 
+Route::group(['middleware' => 'auth:api'], function () {
+    route::get('test', function () {
+        return response()->json(['data' => 'success']);
+    });
+});
+
+Route::get('test2', function () {
+    return response()->json(['data' => 'success']);
+});
+

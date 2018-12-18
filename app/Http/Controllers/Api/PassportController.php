@@ -26,6 +26,6 @@ class PassportController extends Controller
         $user->updated_at = now();
         $user->save();
 
-        return response()->json(['access_token' => 'Bearer' .  $accessToken]);
+        return response()->json(['access_token' => 'Bearer ' .  $accessToken]);
     }
 }
