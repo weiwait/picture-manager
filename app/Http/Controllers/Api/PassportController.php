@@ -15,7 +15,7 @@ class PassportController extends Controller
         $app = app('wechat.mini_program');
         $res = $app->auth->session($request->code);
 
-        if (!$user = User::whereOpenid((string) [$res['openid']])->first()) {
+        if (!$user = User::whereOpenid((string) $res['openid'])->first()) {
             $user = new User();
             $user->openid = $res['openid'];
         }
